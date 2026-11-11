@@ -39,7 +39,7 @@ COPY --from=vendor /app /app
 COPY --from=assets /app/public/build /app/public/build
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint
 
-# Runs as an unprivileged user (1026:100 = owner of the project folder on the NAS).
+# Runs as an unprivileged user (uid:gid 1026:100; match it to the owner of the mounted data folder).
 # Port 8080 needs no capability; dropping the file capability keeps no-new-privileges working.
 RUN apk add --no-cache libcap \
     && setcap -r /usr/local/bin/frankenphp \

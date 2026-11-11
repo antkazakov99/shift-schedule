@@ -13,7 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        // Behind a TLS-terminating reverse proxy (Caddy on the NAS, the hosting's proxy):
+        // Behind a TLS-terminating reverse proxy:
         // trust X-Forwarded-* so URLs and Vite assets are generated with https.
         // The container is only reachable through that proxy.
         $middleware->trustProxies(at: '*');
