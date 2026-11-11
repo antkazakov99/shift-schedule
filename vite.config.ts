@@ -11,8 +11,12 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.ts'],
             refresh: true,
             fonts: [
-                bunny('Instrument Sans', {
+                bunny('Manrope', {
                     weights: [400, 500, 600],
+                    // The UI is in Russian: without the cyrillic subset letters fall back to a system font.
+                    subsets: ['latin', 'cyrillic'],
+                    // Fallback with Manrope metrics (via fontaine) so the font swap doesn't move text.
+                    fallbacks: ['Arial'],
                 }),
             ],
         }),
